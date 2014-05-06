@@ -1,0 +1,15 @@
+apply plugin: 'eclipse'
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile 'com.orientechnologies:orient-commons:1.7-rc2'
+	compile 'com.orientechnologies:orientdb-core:1.7-rc2'
+	compile 'com.orientechnologies:orientdb-object:1.7-rc2'
+	compile 'com.orientechnologies:orientdb-client:1.7-rc2'
+    compile 'org.codehaus.groovy:groovy-all:2.3.0'
+    testCompile 'junit:junit:4.11'
+}
