@@ -10,9 +10,13 @@ class SimpleTest {
 
 	@Before
 	void open() {
-		db = new OObjectDatabaseTx("remote:localhost/demo")
+		db = new OObjectDatabaseTx("memory:demo")
+		if(db.exists()) {
+			db.open("admin", "admin")
+			db.drop()
+		}
+		db.create()
 		db.getEntityManager().registerEntityClasses("org.monasso.domain")
-		db.open("admin", "admin")
 	}
 
 	@Test
@@ -27,7 +31,9 @@ class SimpleTest {
 
 	@After
 	void close() {
-		db.close()
+		if (db.exists()) {
+			db.drop()
+		}
 	}
 
 }
