@@ -2,6 +2,11 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.monasso.domain.Personne
+import org.monasso.domain.Voiture
+
+import com.orientechnologies.orient.core.record.impl.ODocument
+import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery
+import com.orientechnologies.orient.object.db.OObjectDatabaseTx
 
 import com.orientechnologies.orient.core.record.impl.ODocument
 import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery
