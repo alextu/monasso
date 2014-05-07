@@ -1,8 +1,28 @@
 apply plugin: 'eclipse'
 apply plugin: 'groovy'
 
+eclipse {
+	classpath {
+		file {
+			beforeMerged { eclipseClasspath ->
+				eclipseClasspath.entries.removeAll()
+			}
+			withXml {
+				Node node = it.asNode()
+				node.appendNode('classpathentry', [exported: "true", kind: "con", path: "GROOVY_SUPPORT"])
+				node.appendNode('classpathentry', [exported: "true", kind: "con", path: "GROOVY_DSL_SUPPORT"])
+			}
+		}
+	}
+}
+
+tasks.eclipse {
+	dependsOn tasks.cleanEclipse
+}
+
+
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
@@ -10,6 +30,6 @@ dependencies {
 	compile 'com.orientechnologies:orientdb-core:1.7-rc2'
 	compile 'com.orientechnologies:orientdb-object:1.7-rc2'
 	compile 'com.orientechnologies:orientdb-client:1.7-rc2'
-    compile 'org.codehaus.groovy:groovy-all:2.3.0'
-    testCompile 'junit:junit:4.11'
+
+	testCompile 'junit:junit:4.11'
 }
