@@ -7,11 +7,6 @@ eclipse {
 			beforeMerged { eclipseClasspath ->
 				eclipseClasspath.entries.removeAll()
 			}
-			withXml {
-				Node node = it.asNode()
-				node.appendNode('classpathentry', [exported: "true", kind: "con", path: "GROOVY_SUPPORT"])
-				node.appendNode('classpathentry', [exported: "true", kind: "con", path: "GROOVY_DSL_SUPPORT"])
-			}
 		}
 	}
 }
@@ -31,5 +26,6 @@ dependencies {
 	compile 'com.orientechnologies:orientdb-object:1.7-rc2'
 	compile 'com.orientechnologies:orientdb-client:1.7-rc2'
 
+	compile 'org.codehaus.groovy:groovy-all:2.1.8'
 	testCompile 'junit:junit:4.11'
 }
